@@ -1,0 +1,6 @@
+@SkyStorage.API_HostAddress = http://localhost:5118
+
+GET {{SkyStorage.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
