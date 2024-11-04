@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SkyStorage.Application\SkyStorage.Application.csproj" />
+    <ProjectReference Include="..\SkyStorage.Domain\SkyStorage.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
