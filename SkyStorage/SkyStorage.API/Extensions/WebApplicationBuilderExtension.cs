@@ -4,6 +4,8 @@ public static class WebApplicationBuilderExtension
 {
     public static void AddPresentation(this WebApplicationBuilder builder)
     {
+        builder.Services.AddAuthentication();
+        
         // Add services to the container.
 
         builder.Services.AddControllers();
