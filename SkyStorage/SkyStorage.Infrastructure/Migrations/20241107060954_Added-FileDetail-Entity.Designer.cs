@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SkyStorage.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using SkyStorage.Infrastructure.Persistence;
 namespace SkyStorage.Infrastructure.Migrations
 {
     [DbContext(typeof(SkyStorageDbContext))]
-    partial class SkyStorageDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241107060954_Added-FileDetail-Entity")]
+    partial class AddedFileDetailEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
