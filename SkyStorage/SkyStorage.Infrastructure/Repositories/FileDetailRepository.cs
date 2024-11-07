@@ -23,9 +23,22 @@ internal class FileDetailRepository(SkyStorageDbContext dbContext) : IFileDetail
         }
     }
 
-    public async Task<IEnumerable<FileDetail>> GetAllAsync()
+    public async Task<(IEnumerable<FileDetail>, int)> GetAllAsync(Guid userId, string? searchPhrase, int pageSize, int pageNumber)
     {
-        return await dbContext.FileDetails.ToListAsync();
+        var searchPhraseLower = searchPhrase?.ToLower();
+
+        var baseQuery = dbContext.FileDetails
+            .Where(f => f.UserId == userId 
+            && (searchPhraseLower == null || f.FileName.ToLower().Contains(searchPhraseLower)));
+
+        int totalCount = baseQuery.Count();
+
+        var fileDetails = await baseQuery
+            .Skip(pageSize * (pageNumber - 1))
+            .Take(pageSize)
+            .ToListAsync();
+
+        return (fileDetails, totalCount);
     }
 
     public async Task<FileDetail?> GetByIdAsync(Guid id)
