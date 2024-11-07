@@ -7,7 +7,10 @@ public static class ServiceCollectionExtension
 {
     public static void AddApplication(this IServiceCollection services)
     {
-        
+        var applicationAssembly = typeof(ServiceCollectionExtension).Assembly;
+
+        services.AddAutoMapper(applicationAssembly);
+
         services.AddScoped<IUserContext, UserContext>();
         services.AddScoped<IUserValidator, UserValidator>();
     }
