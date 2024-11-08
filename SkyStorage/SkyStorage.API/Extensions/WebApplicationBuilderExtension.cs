@@ -1,4 +1,5 @@
 ﻿using Microsoft.OpenApi.Models;
+using SkyStorage.API.Middlewares;
 
 namespace SkyStorage.API.Extensions;
 
@@ -31,5 +32,7 @@ public static class WebApplicationBuilderExtension
                 }
             });
         });
+
+        builder.Services.AddScoped<ErrorHandlingMiddleware>();
     }
 }
