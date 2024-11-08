@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SkyStorage.Domain.Entities;
 using SkyStorage.Domain.Repositories;
 using SkyStorage.Infrastructure.Persistence;
+using SkyStorage.Infrastructure.Repositories;
 
 
 namespace SkyStorage.Infrastructure.Extensions;
@@ -21,6 +22,6 @@ public static class ServiceCollectionExtension
 
        identityBuilder.AddEntityFrameworkStores<SkyStorageDbContext>();
 
-        services.AddScoped<IFileDetailRepository, IFileDetailRepository>();
+        services.AddScoped<IFileDetailRepository, FileDetailRepository>();
     }
 }
