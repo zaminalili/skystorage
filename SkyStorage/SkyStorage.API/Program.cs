@@ -2,6 +2,7 @@ using SkyStorage.API.Extensions;
 using SkyStorage.Application.Extensions;
 using SkyStorage.Domain.Entities;
 using SkyStorage.Infrastructure.Extensions;
+using SkyStorage.Infrastructure.MigrationTasks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,10 @@ builder.Services.AddInfrastructure(builder.Configuration, builder.Services.AddId
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
+
+var scope = app.Services.CreateScope();
+var migrationRunner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+await migrationRunner.Migrate();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
