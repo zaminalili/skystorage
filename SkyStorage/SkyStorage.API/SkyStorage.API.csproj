@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SkyStorage.Application\SkyStorage.Application.csproj" />
     <ProjectReference Include="..\SkyStorage.Infrastructure\SkyStorage.Infrastructure.csproj" />
   </ItemGroup>
