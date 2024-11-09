@@ -3,10 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SkyStorage.Domain.Entities;
+using SkyStorage.Domain.Interfaces;
 using SkyStorage.Domain.Repositories;
+using SkyStorage.Infrastructure.Configuration;
 using SkyStorage.Infrastructure.MigrationTasks;
 using SkyStorage.Infrastructure.Persistence;
 using SkyStorage.Infrastructure.Repositories;
+using SkyStorage.Infrastructure.Storage;
 
 
 namespace SkyStorage.Infrastructure.Extensions;
@@ -25,5 +28,7 @@ public static class ServiceCollectionExtension
 
         services.AddScoped<IFileDetailRepository, FileDetailRepository>();
         services.AddScoped<IMigrationRunner, MigrationRunner>();
+
+        services.Configure<BlobStorageSettings>(configuration.GetSection("BlobStorage"));
     }
 }
