@@ -30,5 +30,6 @@ public static class ServiceCollectionExtension
         services.AddScoped<IMigrationRunner, MigrationRunner>();
 
         services.Configure<BlobStorageSettings>(configuration.GetSection("BlobStorage"));
+        services.AddScoped<IBlobStorageService, BlobStorageService>();
     }
 }
