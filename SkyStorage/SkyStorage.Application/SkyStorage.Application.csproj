@@ -18,8 +18,4 @@
     <ProjectReference Include="..\SkyStorage.Domain\SkyStorage.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="FileDetails\Commands\" />
-  </ItemGroup>
-
 </Project>
