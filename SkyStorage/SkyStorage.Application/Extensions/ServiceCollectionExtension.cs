@@ -19,6 +19,5 @@ public static class ServiceCollectionExtension
 
         services.AddScoped<IUserContext, UserContext>();
         services.AddScoped<IUserValidator, UserValidator>();
-        services.AddScoped<ICurrentUserValidator, CurrentUserValidator>();
     }
 }

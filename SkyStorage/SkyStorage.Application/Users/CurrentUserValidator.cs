@@ -1,14 +1,16 @@
-﻿using SkyStorage.Domain.Exceptions;
+﻿using FluentValidation;
+using SkyStorage.Domain.Exceptions;
 
 namespace SkyStorage.Application.Users;
 
-internal class CurrentUserValidator(IUserContext userContext) : ICurrentUserValidator
+public class CurrentUserValidator: AbstractValidator<Guid>
 {
-    public bool IsCurrentUser(Guid userId)
+    public CurrentUserValidator(IUserContext userContext)
     {
-        if (userId.ToString() != userContext.GetCurrentUser()!.Id)
-            throw new MismatchException("User", "Current user");
+        Guid currentUserId = new Guid(userContext.GetCurrentUser()!.Id);
 
-        return true;
+        RuleFor(g => g)
+            .Equal(currentUserId)
+            .WithMessage("ID does not match the current user ID");
     }
 }
