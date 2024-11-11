@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SkyStorage.Application.FileDetails.Commands.DeleteFile;
 using SkyStorage.Application.FileDetails.Commands.UploadFile;
 using SkyStorage.Application.FileDetails.Queries.DownloadFile;
 using SkyStorage.Application.FileDetails.Queries.GetAllFileDetails;
@@ -55,6 +56,15 @@ namespace SkyStorage.API.Controllers
 
             var (fileStream, contentType, name) = await mediator.Send(query);
             return File(fileStream, contentType, name);
+        }
+
+        [HttpDelete("{fileId}")]
+        public async Task<IActionResult> DeleteFile([FromRoute] Guid userId, [FromRoute] Guid fileId)
+        {
+            var query = new DeleteFileCommand(fileId);
+            await mediator.Send(query);
+
+            return NoContent();
         }
     }
 }
