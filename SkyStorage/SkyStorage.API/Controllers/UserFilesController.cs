@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SkyStorage.Application.FileDetails.Commands.UploadFile;
+using SkyStorage.Application.FileDetails.Queries.DownloadFile;
 using SkyStorage.Application.FileDetails.Queries.GetAllFileDetails;
 using SkyStorage.Application.Users;
 
@@ -45,6 +46,15 @@ namespace SkyStorage.API.Controllers
             await mediator.Send(command);
 
             return NoContent();
+        }
+
+        [HttpGet("{fileId}/download")]
+        public async Task<IActionResult> DownloadFile([FromRoute] Guid userId, [FromRoute] Guid fileId)
+        {
+            var query = new DownloadFileQuery(fileId);
+
+            var (fileStream, contentType, name) = await mediator.Send(query);
+            return File(fileStream, contentType, name);
         }
     }
 }
