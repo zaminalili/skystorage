@@ -58,4 +58,15 @@ internal class BlobStorageService : IBlobStorageService
             throw new FileNotFoundException($"file {fileName} named not found");
         }
     }
+
+    public async Task DeleteFileAsync(string fileName)
+    {
+        var blobClient = containerClient.GetBlobClient(fileName);
+
+
+        if (await blobClient.DeleteIfExistsAsync())
+            logger.LogInformation("File deleted from blob storage. FileName: {FileName}", fileName);
+        else
+            throw new FileNotFoundException($"file {fileName} named not found");
+    }
 }
