@@ -21,7 +21,7 @@ public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : 
         }
         catch (Exception ex)
         {
-            await HandleExceptionAsync(context, 500, ex, ex.Message);
+            await HandleExceptionAsync(context, 500, ex, "Something went wrong");
         }
     }
 
