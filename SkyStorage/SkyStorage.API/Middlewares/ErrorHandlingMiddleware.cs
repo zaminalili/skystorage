@@ -19,6 +19,10 @@ public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : 
         {
             await HandleExceptionAsync(context, 403, ex, ex.Message);
         }
+        catch (FileNotFoundException ex)
+        {
+            await HandleExceptionAsync(context, 400, ex, ex.Message);
+        }
         catch (Exception ex)
         {
             await HandleExceptionAsync(context, 500, ex, "Something went wrong");
