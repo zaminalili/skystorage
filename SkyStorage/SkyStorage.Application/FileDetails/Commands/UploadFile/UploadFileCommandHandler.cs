@@ -1,21 +1,29 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using SkyStorage.Application.Users;
 using SkyStorage.Domain.Entities;
 using SkyStorage.Domain.Interfaces;
 using SkyStorage.Domain.Repositories;
+using SkyStorage.Domain.Exceptions;
 
 namespace SkyStorage.Application.FileDetails.Commands.UploadFile;
 
 public class UploadFileCommandHandler(IBlobStorageService blobStorageService, 
                                       IFileDetailRepository fileDetailRepository, 
                                       IMapper mapper,
-                                      ILogger<UploadFileCommandHandler> logger) : IRequestHandler<UploadFileCommand>
+                                      ILogger<UploadFileCommandHandler> logger, 
+                                      IUserContext userContext) : IRequestHandler<UploadFileCommand>
 {
     public async Task Handle(UploadFileCommand request, CancellationToken cancellationToken)
     {
         try
         {
+            logger.LogInformation("Checking user on id: {userId}", request.userId);
+
+            if (request.userId.ToString() != userContext.GetCurrentUser()!.Id)
+                throw new NotFoundException("User", request.userId.ToString());
+
             logger.LogInformation("Uploading file {FileName} to Blob Storage", request.FileName);
             var fileUrl = blobStorageService.UploadToBlobAsync(request.FileName, request.File);
 
