@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EE4D1161
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkyStorage.Application.Tests", "Tests\SkyStorage.Application.Tests\SkyStorage.Application.Tests.csproj", "{8375416A-238A-439F-BF6E-CC765205C42B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkyStorage.API.Tests", "Tests\SkyStorage.API.Tests\SkyStorage.API.Tests.csproj", "{1288E15E-404C-4B9A-B684-6B71A31A8812}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{8375416A-238A-439F-BF6E-CC765205C42B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8375416A-238A-439F-BF6E-CC765205C42B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8375416A-238A-439F-BF6E-CC765205C42B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1288E15E-404C-4B9A-B684-6B71A31A8812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1288E15E-404C-4B9A-B684-6B71A31A8812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1288E15E-404C-4B9A-B684-6B71A31A8812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1288E15E-404C-4B9A-B684-6B71A31A8812}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{3BA6C59B-56D4-4D83-A6A5-579F115C1480} = {7055B160-C3DC-4539-BDD1-EFF9DBA42C6B}
 		{C5DC85DD-5B12-4DB7-A767-D797C6D015D0} = {7055B160-C3DC-4539-BDD1-EFF9DBA42C6B}
 		{8375416A-238A-439F-BF6E-CC765205C42B} = {EE4D1161-1580-43F5-ACA7-97C3DF4B328B}
+		{1288E15E-404C-4B9A-B684-6B71A31A8812} = {EE4D1161-1580-43F5-ACA7-97C3DF4B328B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DA4FDEBD-95C1-4D7E-A06E-8C38D5BCBD74}
