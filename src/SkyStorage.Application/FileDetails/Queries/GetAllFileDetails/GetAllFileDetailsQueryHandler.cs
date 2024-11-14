@@ -13,9 +13,7 @@ public class GetAllFileDetailsQueryHandler(IFileDetailRepository fileDetailRepos
     public async Task<PagedResult<FileDetailDto>> Handle(GetAllFileDetailsQuery request, CancellationToken cancellationToken)
     {
         Guid userId = new Guid(userContext.GetCurrentUser()!.Id);
-        if (userId.ToString() != userContext.GetCurrentUser()!.Id)
-            throw new NotFoundException("User", userId.ToString());
-
+        
         var (fileDetails, totalCount) = await fileDetailRepository.GetAllAsync(userId, request.searchPhrase, request.pageSize, request.pageNumber);
 
         var fileDetailDtos = mapper.Map<IEnumerable<FileDetailDto>>(fileDetails);

@@ -6,7 +6,7 @@ using SkyStorage.Domain.Repositories;
 
 namespace SkyStorage.Application.FileDetails.Queries.DownloadFile;
 
-internal class DownloadFileQueryHandler(IBlobStorageService blobStorageService, 
+public class DownloadFileQueryHandler(IBlobStorageService blobStorageService, 
                                         IFileDetailRepository fileDetailRepository,
                                         ILogger<DownloadFileQueryHandler> logger) : IRequestHandler<DownloadFileQuery, (Stream, string, string)>
 {
